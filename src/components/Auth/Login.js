@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Connexion</h2>
       <form onSubmit={onSubmit}>
         <input

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const Register = () => {
   }
 
   return (
-    <div>
+    <div className="register-container">
       <h2>Inscription</h2>
       <form onSubmit={onSubmit}>
         <input
