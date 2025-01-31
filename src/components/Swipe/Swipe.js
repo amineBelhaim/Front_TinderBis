@@ -1,5 +1,5 @@
 // src/components/Swipe/Swipe.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SwipeCard from "./SwipeCard";
 import {
@@ -7,14 +7,13 @@ import {
   likeUser,
   dislikeUser,
 } from "../../redux/slices/userSlice";
-import "./Swipe.css"; // Assurez-vous que ce fichier existe dans le même dossier
+import "./Swipe.css";
 
 const Swipe = () => {
   const dispatch = useDispatch();
   const { users, loading, error, matchMessage } = useSelector(
     (state) => state.user
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -26,13 +25,13 @@ const Swipe = () => {
     } else if (direction === "left") {
       dispatch(dislikeUser(user._id));
     }
-    setCurrentIndex((prev) => prev + 1);
+    // Pas besoin de gérer currentIndex manuellement
   };
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  const currentUser = users[currentIndex];
+  const currentUser = users[0]; // Toujours prendre le premier utilisateur
 
   return (
     <div className="swipe-container">

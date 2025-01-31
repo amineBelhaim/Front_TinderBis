@@ -73,7 +73,7 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // fetchUsers
+      // Gestion de fetchUsers
       .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -86,7 +86,8 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // likeUser
+
+      // Gestion de likeUser
       .addCase(likeUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -95,10 +96,12 @@ const userSlice = createSlice({
       .addCase(likeUser.fulfilled, (state, action) => {
         state.loading = false;
         state.matchMessage = action.payload.msg;
-        if (action.payload.match) {
-          state.matches.push(action.payload); // Adapter en fonction de votre logique
-        }
-        // Supprimer l'utilisateur liké de la liste des users
+
+        // Si c'est un match, vous pourriez envisager de gérer cela différemment
+        // Par exemple, en récupérant les détails du match via un autre thunk
+        // ou en mettant à jour la liste des matchs via getMatches.
+
+        // Suppression de l'utilisateur liké de la liste des utilisateurs à swiper
         state.users = state.users.filter(
           (user) => user._id !== action.meta.arg
         );
@@ -107,14 +110,15 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // dislikeUser
+
+      // Gestion de dislikeUser
       .addCase(dislikeUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(dislikeUser.fulfilled, (state, action) => {
         state.loading = false;
-        // Supprimer l'utilisateur disliké de la liste des users
+        // Suppression de l'utilisateur disliké de la liste des utilisateurs à swiper
         state.users = state.users.filter(
           (user) => user._id !== action.meta.arg
         );
@@ -123,7 +127,8 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // getMatches
+
+      // Gestion de getMatches
       .addCase(getMatches.pending, (state) => {
         state.loading = true;
         state.error = null;
