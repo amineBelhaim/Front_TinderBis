@@ -1,0 +1,68 @@
+/* frontend/src/components/Message/Messages.css */
+
+.messages-container {
+    display: flex;
+    height: 80vh;
+    margin: 20px;
+  }
+  
+  .matches-list {
+    width: 30%;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .match-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .match-item:hover,
+  .match-item.active {
+    background-color: #f0f0f0;
+  }
+  
+  .chat-window {
+    width: 70%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .messages-display {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message.sent {
+    text-align: right;
+  }
+  
+  .message.received {
+    text-align: left;
+  }
+  
+  .message-input {
+    display: flex;
+  }
+  
+  .message-input input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .message-input button {
+    padding: 10px;
+    font-size: 1em;
+  }
+  
